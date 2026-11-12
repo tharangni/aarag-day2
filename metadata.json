@@ -1,0 +1,6 @@
+{
+  "name": "Rent Somebody",
+  "description": "On-demand chore and task marketplace connecting people who need time with people who want to earn money, featuring AI task guidance, live support, partner perks, and verified leaderboards.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
