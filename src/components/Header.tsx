@@ -35,30 +35,27 @@ export const Header: React.FC<HeaderProps> = ({
   };
 
   return (
-    <header className="sticky top-0 z-40 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 transition-colors">
+    <header className="sticky top-0 z-40 w-full max-w-full bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between gap-4 sm:gap-8 h-16">
+        <div className="flex items-center justify-between gap-4 h-16 min-w-0">
           {/* Zone 1: Single Brand Wordmark */}
-          <div className="flex items-center gap-2.5 sm:gap-3 shrink-0">
+          <div className="flex items-center gap-2.5 shrink-0">
             <button
               onClick={() => handleNavClick('feed')}
-              className="text-lg sm:text-xl font-bold tracking-tight text-slate-900 dark:text-white flex items-center gap-2 hover:opacity-90 transition-opacity"
+              className="text-lg sm:text-xl font-bold tracking-tight text-slate-900 dark:text-white flex items-center gap-2 hover:opacity-90 transition-opacity cursor-pointer"
             >
-              <span className="w-8 h-8 rounded-lg bg-emerald-600 text-white flex items-center justify-center font-extrabold text-base shadow-sm">
+              <span className="w-8 h-8 rounded-lg bg-emerald-600 text-white flex items-center justify-center font-extrabold text-base shadow-sm shrink-0">
                 RS
               </span>
               <span className="whitespace-nowrap">Rent Somebody</span>
             </button>
-            <span className="hidden xl:inline-flex text-[11px] font-semibold text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/60 px-2 py-0.5 rounded-full border border-emerald-200 dark:border-emerald-800">
-              0% Fee Launch Trial
-            </span>
           </div>
 
-          {/* Zone 2: 4-5 Clean Single-Line Nav Links (Desktop) */}
-          <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-slate-600 dark:text-slate-300">
+          {/* Zone 2: Clean Single-Line Nav Links (Visible on lg: 1024px+) */}
+          <nav className="hidden lg:flex items-center gap-6 xl:gap-8 text-sm font-medium text-slate-600 dark:text-slate-300">
             <button
               onClick={() => handleNavClick('feed')}
-              className={`hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors whitespace-nowrap shrink-0 ${
+              className={`hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors whitespace-nowrap shrink-0 cursor-pointer ${
                 activeNavTab === 'feed' ? 'text-emerald-600 dark:text-emerald-400 font-semibold' : ''
               }`}
             >
@@ -66,11 +63,11 @@ export const Header: React.FC<HeaderProps> = ({
             </button>
             <button
               onClick={() => handleNavClick('leaderboard')}
-              className={`hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors whitespace-nowrap shrink-0 flex items-center gap-1.5 ${
+              className={`hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors whitespace-nowrap shrink-0 flex items-center gap-1.5 cursor-pointer ${
                 activeNavTab === 'leaderboard' ? 'text-emerald-600 dark:text-emerald-400 font-semibold' : ''
               }`}
             >
-              <span>VIP Leaderboard</span>
+              <span>Leaderboard</span>
               {!isProSubscriber && (
                 <span className="text-[10px] text-amber-700 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/50 px-1.5 py-0.2 rounded border border-amber-200 dark:border-amber-800">
                   Pro
@@ -79,23 +76,23 @@ export const Header: React.FC<HeaderProps> = ({
             </button>
             <button
               onClick={() => handleNavClick('partners')}
-              className={`hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors whitespace-nowrap shrink-0 ${
+              className={`hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors whitespace-nowrap shrink-0 cursor-pointer ${
                 activeNavTab === 'partners' ? 'text-emerald-600 dark:text-emerald-400 font-semibold' : ''
               }`}
             >
-              Grab Care &amp; Carousell
+              Partners
             </button>
             <button
               onClick={() => handleNavClick('roadshow')}
-              className={`hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors whitespace-nowrap shrink-0 ${
+              className={`hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors whitespace-nowrap shrink-0 cursor-pointer ${
                 activeNavTab === 'roadshow' ? 'text-emerald-600 dark:text-emerald-400 font-semibold' : ''
               }`}
             >
-              Roadshow Enactment
+              Roadshow
             </button>
             <button
               onClick={onOpenBusinessModelClick}
-              className="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors whitespace-nowrap shrink-0 flex items-center gap-1 text-slate-500 dark:text-slate-400"
+              className="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors whitespace-nowrap shrink-0 flex items-center gap-1 text-slate-500 dark:text-slate-400 cursor-pointer"
               title="View Original Business Model Canvas"
             >
               <FileText className="w-3.5 h-3.5" />
@@ -105,31 +102,10 @@ export const Header: React.FC<HeaderProps> = ({
 
           {/* Zone 3: 1 Primary Action & Utilities */}
           <div className="flex items-center gap-2 sm:gap-3 shrink-0">
-            {/* Quick Persona Switcher (Desktop) */}
-            <button
-              onClick={onRoleToggle}
-              className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors whitespace-nowrap shrink-0"
-              title={`Switch to ${currentRole === 'buyer' ? 'Seller (Earn Money)' : 'Buyer (Get Help)'}`}
-            >
-              <ArrowLeftRight className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
-              <span>Viewing as:</span>
-              <strong className="capitalize text-slate-900 dark:text-white">{currentRole}</strong>
-            </button>
-
-            {/* AI Advisor Button */}
-            <button
-              onClick={onOpenAdvisorClick}
-              className="p-2 text-slate-600 dark:text-slate-300 hover:text-emerald-600 dark:hover:text-emerald-400 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
-              title="Open 24/7 AI Guidance Agent"
-              aria-label="Open 24/7 AI Guidance Agent"
-            >
-              <Sparkles className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
-            </button>
-
             {/* Dark Mode Toggle */}
             <button
               onClick={() => setIsDark(!isDark)}
-              className="p-2 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+              className="p-2 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
               title="Toggle theme"
               aria-label="Toggle theme"
             >
@@ -140,26 +116,26 @@ export const Header: React.FC<HeaderProps> = ({
             {currentRole === 'buyer' ? (
               <button
                 onClick={onPostChoreClick}
-                className="flex items-center gap-1.5 px-3 sm:px-4 py-2 text-xs font-semibold text-white bg-emerald-600 hover:bg-emerald-700 active:scale-95 rounded-lg shadow-sm transition-all whitespace-nowrap shrink-0"
+                className="flex items-center gap-1.5 px-3 sm:px-4 py-2 text-xs font-semibold text-white bg-emerald-600 hover:bg-emerald-700 active:scale-95 rounded-lg shadow-sm transition-all whitespace-nowrap shrink-0 cursor-pointer"
               >
-                <PlusCircle className="w-4 h-4" />
+                <PlusCircle className="w-4 h-4 shrink-0" />
                 <span className="hidden xs:inline">Post a Chore</span>
                 <span className="xs:hidden">Post</span>
               </button>
             ) : (
               <button
                 onClick={() => handleNavClick('feed')}
-                className="flex items-center gap-1.5 px-3 sm:px-4 py-2 text-xs font-semibold text-white bg-slate-900 hover:bg-slate-800 dark:bg-emerald-600 dark:hover:bg-emerald-700 active:scale-95 rounded-lg shadow-sm transition-all whitespace-nowrap shrink-0"
+                className="flex items-center gap-1.5 px-3 sm:px-4 py-2 text-xs font-semibold text-white bg-slate-900 hover:bg-slate-800 dark:bg-emerald-600 dark:hover:bg-emerald-700 active:scale-95 rounded-lg shadow-sm transition-all whitespace-nowrap shrink-0 cursor-pointer"
               >
-                <span className="hidden xs:inline">Find Paid Tasks</span>
+                <span className="hidden xs:inline">Find Tasks</span>
                 <span className="xs:hidden">Tasks</span>
               </button>
             )}
 
-            {/* Mobile Hamburger Toggle Button */}
+            {/* Mobile / Tablet Hamburger Toggle Button (Visible on < lg) */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors"
+              className="lg:hidden p-2 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors cursor-pointer"
               aria-label="Open navigation menu"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -168,9 +144,9 @@ export const Header: React.FC<HeaderProps> = ({
         </div>
       </div>
 
-      {/* Mobile Drawer Menu */}
+      {/* Mobile / Tablet Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 pt-3 pb-5 space-y-3 shadow-xl">
+        <div className="lg:hidden border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 pt-3 pb-5 space-y-3 shadow-xl">
           {/* Mobile Persona Switcher */}
           <div className="flex items-center justify-between p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
             <div className="text-xs">

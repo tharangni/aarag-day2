@@ -11,29 +11,29 @@ export const TrialBanner: React.FC<TrialBannerProps> = ({ onLearnMore }) => {
   if (dismissed) return null;
 
   return (
-    <div className="bg-gradient-to-r from-emerald-600 to-teal-700 text-white px-4 py-2.5 text-xs font-medium shadow-sm transition-all">
-      <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
-        <div className="flex items-center gap-2.5 overflow-hidden">
+    <div className="w-full max-w-full overflow-hidden bg-gradient-to-r from-emerald-600 to-teal-700 text-white px-3 sm:px-4 py-2 text-xs font-medium shadow-sm transition-all">
+      <div className="max-w-7xl mx-auto flex items-center justify-between gap-2 sm:gap-4 min-w-0">
+        <div className="flex items-center gap-2 min-w-0 flex-1 overflow-hidden">
           <span className="flex items-center justify-center w-5 h-5 rounded-full bg-white/20 shrink-0">
             <Sparkles className="w-3 h-3 text-emerald-200" />
           </span>
-          <p className="truncate">
-            <strong className="font-semibold text-emerald-100">Official Launch Free Trial:</strong>{' '}
-            Enjoy 0% platform commission on all chores for the next 14 days! Helpers keep 100% of earnings; buyers pay zero booking surcharges.
+          <p className="truncate text-[11px] sm:text-xs min-w-0">
+            <strong className="font-semibold text-emerald-100">0% Commission Free Trial:</strong>{' '}
+            Keep 100% of earnings on all chores for the next 14 days!
           </p>
         </div>
 
-        <div className="flex items-center gap-3 shrink-0">
+        <div className="flex items-center gap-2 sm:gap-3 shrink-0">
           <button
             onClick={onLearnMore}
-            className="hidden sm:inline-flex items-center gap-1 text-emerald-100 hover:text-white underline decoration-emerald-300 underline-offset-2 transition-colors cursor-pointer"
+            className="hidden md:inline-flex items-center gap-1 text-emerald-100 hover:text-white underline decoration-emerald-300 underline-offset-2 transition-colors cursor-pointer text-xs whitespace-nowrap"
           >
-            <span>See Fee Breakdown</span>
+            <span>Fee Breakdown</span>
             <ChevronRight className="w-3 h-3" />
           </button>
           <button
             onClick={() => setDismissed(true)}
-            className="text-white/70 hover:text-white p-1 rounded hover:bg-white/10 transition-colors"
+            className="text-white/80 hover:text-white p-1 rounded hover:bg-white/10 transition-colors"
             title="Dismiss notice"
             aria-label="Dismiss notice"
           >
